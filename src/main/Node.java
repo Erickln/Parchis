@@ -61,9 +61,10 @@ public class Node {
 	//If Token does not contain in the token it adds it
 	public void add(Token token) {
 		if(Tokens.size()>=2){
-			System.out.println("Node in pos"+pos+" is full and you tried to add a token\n"+this);
+			System.out.println(this.getClass().getSimpleName()+" in pos"+pos+" is full and you tried to add a token\n"+this);
 		}else if(Tokens.contains(token)){
-			System.out.println("You tried to add a  Token in a Node that already contains that Token \n Node already contains a token of color with number: "+token.getColor()+" : "+token.getNumber()+"\n"+this);
+			System.out.println("You tried to add a  Token in a "+this.getClass().getSimpleName()+" that already contains that Token \n "
+			+this.getClass().getSimpleName()+" already contains a token of color with number: "+token.getColor()+" : "+token.getNumber()+"\n"+this);
 			//To do: change token.getColor() and token.getNumber() to token.toString()
 		}else {
 			Tokens.add(token);
@@ -84,18 +85,19 @@ public class Node {
 		return Tokens.size() < 2;
 	}
 
+	@Override
 	public String toString(){
 		//This will return the position of the node, the number of tokens and the tokens
 		//In this format: Node: pos: 0, Tokens: 2, Tokens: \n[Token: color: red, number: 1\nToken: color: red, number: 2]
-		String s = "Node: pos: "+pos+", Tokens: "+Tokens.size()+", Tokens: \n[";
+		String res = this.getClass().getSimpleName()+": pos: "+pos+", Tokens: "+Tokens.size()+", Tokens: \n[";
 		for(int i = 0; i < Tokens.size(); i++){
-			s += Tokens.get(i).toString();
+			res += Tokens.get(i).toString();
 			if(i != Tokens.size()-1){
-				s += "\n";
+				res += "\n";
 			}
 		}
-		s += "]";
-		return s;
+		res += "]";
+		return res;
 	}
 
 }
@@ -109,19 +111,14 @@ class Home extends Node {
 	@Override
 	public void add(Token token) {
 		if(Tokens.size()>=4){
-			System.out.println("Node in pos"+pos+" is full and you tried to add a token\n"+this);
+			System.out.println(this.getClass().getSimpleName()+" in pos"+pos+" is full and you tried to add a token\n"+this);
 		}else if(Tokens.contains(token)){
-			System.out.println("You tried to add a  Token in a Node that already contains that Token \n Node already contains a token of color with number: "+token.getColor()+" : "+token.getNumber()+"\n"+this);
+			System.out.println("You tried to add a  Token in a "+this.getClass().getSimpleName()+" that already contains that Token \n "
+			+this.getClass().getSimpleName()+" already contains a token of color with number: "+token.getColor()+" : "+token.getNumber()+"\n"+this);
 			//To do: change token.getColor() and token.getNumber() to token.toString()
 		}else {
 			Tokens.add(token);
 		}
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("supmate");
-		System.out.println("cambio");
 	}
 
 }

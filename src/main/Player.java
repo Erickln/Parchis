@@ -77,7 +77,20 @@ public class Player {
 		return (int) (Math.random() * 6) + 1;
 	}
 
-	//This method will make inGame value false
+	//This method will override the toString method and returnn a String with the player's color, inGame, won and tokens in this format:
+	//Player: color: red, inGame: true, won: false, Tokens: \n[Token: color: red, number: 1\nToken: color: red, number: 2]
+	@Override
+	public String toString() {
+		String res = "Player: color: " + color + ", inGame: " + inGame + ", won: " + won + ", Tokens: \n[";
+		for (int i = 0; i < Tokens.size(); i++) {
+			res += Tokens.get(i).toString();
+			if (i != Tokens.size() - 1) {
+				res += "\n";
+			}
+		}
+		res += "]";
+		return res;
+	}
 
 	public static void main(String[] args) {
 		//Home home = new Home(player, front);
