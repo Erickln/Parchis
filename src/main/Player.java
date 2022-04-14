@@ -9,19 +9,33 @@ public class Player {
 	private boolean won = false;
 	//If Player is currently in game
 	private boolean inGame = false;
-	private int startPos;
+	//Start will have 4 possible values in pos: 5,22,39,56
+	private Start start;
 	private Home home;
-	private int color;
+	private int color = -1;
 
-	public Player(int color, int startPos, Home home) {
+	public Player(int color, Home home) {
 		Tokens = new ArrayList<>();
 		for (int i = 0; i < 4; i++) {
 			// Create 4 tokens ****** To do: Change constructer due to Tokens constructor ********
 			Tokens.add(new Token());
 		}
-		this.color = color;
-		this.startPos = home.front.getPos();
+
+		//If color is not between 0 and 6 then print error
+		if (color<5&&color>0) {
+			this.color = color;
+		}else {
+			System.out.println("Trying to create a player with a invalid color: "+color);
+		}
+		
 		this.home = home;
+		
+		//If home.front.getPos() != 5,22,39,56 trow exception. To do: Removce this line if class Start already has a method that checks if the start is valid
+		if (home.front.getPos() != 5 && home.front.getPos() != 22 && home.front.getPos() != 39 && home.front.getPos() != 56) {
+			System.out.println("Trying to create a player with a invalid start position: "+home.front.getPos());
+		}else {
+			this.start = home.front;
+		}
 	}
 
 	public ArrayList<Token> getTokens() {
@@ -36,7 +50,7 @@ public class Player {
 		won = b;
 	}
 
-	public boolean getWin() {
+	public boolean hasWon() {
 		return won;
 	}
 
@@ -44,16 +58,16 @@ public class Player {
 		inGame = b;
 	}
 
-	public boolean getInGame() {
+	public boolean isInGame() {
 		return inGame;
 	}
 
 	public void setStartPos(int i) {
-		startPos = i;
+		start.setPos(i);
 	}
 
 	public int getStartPos() {
-		return startPos;
+		return start.getPos();
 	}
 
 	public Home getHome() {
@@ -93,6 +107,5 @@ public class Player {
 	}
 
 	public static void main(String[] args) {
-		//Home home = new Home(player, front);
 	}
 }

@@ -4,23 +4,43 @@ import java.util.ArrayList;
 
 public class Node {
 	//Tokens in the node
-	ArrayList<Token> Tokens = new ArrayList<>();
+	protected ArrayList<Token> Tokens = new ArrayList<>();
 	//Father of the node
-	Node back;
+	protected Node back;
 	//Children of the node
-	Node front;
+	protected Node front;
 	//Posotion of the node in the Board
-	int pos;
-	int safe = -1;
+	protected int pos;
+	protected int playerOwner = -1;
+
+	public Node(){
+		this.Tokens = new ArrayList<>();
+		back = null;
+		front = null;
+		pos = -1;
+	}
 
 
-
-	public Node(ArrayList<Token> Tokens, Node back, Node front, int pos, int safe) {
-		this.Tokens = Tokens;
+	public Node(Node back, Node front, int pos, int playerOwner) {
+		this.Tokens = new ArrayList<>();
 		this.back 	= back;
 		this.front 	= front;
 		this.pos 	= pos;
-		this.safe 	= safe;
+		//If playerOwner is not between -1 and 6 then print error and cancel construction else set playerOwner
+		if (playerOwner<=6&&playerOwner>=-1) {
+			this.playerOwner = playerOwner;
+		}else {
+			System.out.println("Trying to create a node with a invalid playerOwner: "+playerOwner
+			+"\nSafe in "+this.getClass().getSimpleName()+" setted into -1");
+		}
+	}
+
+	public Node(Node back, Node front, int pos) {
+		this.Tokens = new ArrayList<>();
+		this.back 	= back;
+		this.front 	= front;
+		this.pos 	= pos;
+		this.playerOwner = -1;
 	}
 
 	public int getPos() {
@@ -31,12 +51,12 @@ public class Node {
 		this.pos = pos;
 	}
 
-	public int getSafe() {
-		return safe;
+	public int getPlayerOwner() {
+		return playerOwner;
 	}
 
-	public void setSafe(int safe) {
-		this.safe = safe;
+	public void setPlayerOwner(int playerOwner) {
+		this.playerOwner = playerOwner;
 	}
 
 	//This method will return the previous node
@@ -104,8 +124,25 @@ public class Node {
 
 class Home extends Node {
 
-	public Home(Player player, Start front) {
-		super(player.getTokens(), null, front, 0, -1);
+	Start front;
+
+	//This constructor will create a home with a start and a playerOwner
+	//back is null because it is not provided
+	public Home(int playerOwner, Start front) {
+		super(null, front, 0, playerOwner);
+	}
+
+	//This constructor will create a home with a start
+	//back is null and playerOwner is -1 because there were not provided 
+	public Home(Start front) {
+		super(null, front, 0, -1);
+	}
+
+	//This constructor will create a home with playerOwner
+	//back is null, front is null and playerOwner is -1 because tehre were not provided
+	public Home(int playerOwner) {
+		super(null, null, 0, -1);
+		this.playerOwner = playerOwner;
 	}
 
 	@Override
