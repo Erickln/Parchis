@@ -6,7 +6,7 @@ public class main {
 		Home home = new Home(1);
 		Start start = new Start(home, new Node(null, null, 4), new Node(null, null, 6), 5, 1);
 		home.setFront(start);
-		Player player = new Player(1,home);
+		Player player = new Player(1, home);
 	}
 
 }

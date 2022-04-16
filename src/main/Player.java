@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Player {
 
 	private ArrayList<Token> Tokens = new ArrayList<>();
-	//If the player already won
+	// If the player already won
 	private boolean won = false;
-	//If Player is currently in game
+	// If Player is currently in game
 	private boolean inGame = false;
-	//Start will have 4 possible values in pos: 5,22,39,56
+	// Start will have 4 possible values in pos: 5,22,39,56
 	private Start start;
 	private Home home;
 	private int color = -1;
@@ -17,23 +17,26 @@ public class Player {
 	public Player(int color, Home home) {
 		Tokens = new ArrayList<>();
 		for (int i = 0; i < 4; i++) {
-			// Create 4 tokens ****** To do: Change constructer due to Tokens constructor ********
+			// Create 4 tokens ****** To do: Change constructor due to Tokens constructor
+			// ********
 			Tokens.add(new Token());
 		}
 
-		//If color is not between 0 and 6 then print error
-		if (color<5&&color>0) {
+		// If color is not between 1 and 4 then print error
+		if (color < 5 && color > 0) {
 			this.color = color;
-		}else {
-			System.out.println("Trying to create a player with a invalid color: "+color);
+		} else {
+			System.out.println("Trying to create a player with a invalid color: " + color);
 		}
-		
+
 		this.home = home;
-		
-		//If home.front.getPos() != 5,22,39,56 trow exception. To do: Removce this line if class Start already has a method that checks if the start is valid
-		if (home.front.getPos() != 5 && home.front.getPos() != 22 && home.front.getPos() != 39 && home.front.getPos() != 56) {
-			System.out.println("Trying to create a player with a invalid start position: "+home.front.getPos());
-		}else {
+
+		// If home.front.getPos() != 5,22,39,56 throw exception. To do: Remove this line
+		// if class Start already has a method that checks if the start is valid
+		if (home.front.getPos() != 5 && home.front.getPos() != 22 && home.front.getPos() != 39
+				&& home.front.getPos() != 56) {
+			System.out.println("Trying to create a player with a invalid start position: " + home.front.getPos());
+		} else {
 			this.start = home.front;
 		}
 	}
@@ -86,13 +89,15 @@ public class Player {
 		return color;
 	}
 
-	//this method will simulate a dice roll
+	// this method will simulate a dice roll
 	public int rollDice() {
 		return (int) (Math.random() * 6) + 1;
 	}
 
-	//This method will override the toString method and returnn a String with the player's color, inGame, won and tokens in this format:
-	//Player: color: red, inGame: true, won: false, Tokens: \n[Token: color: red, number: 1\nToken: color: red, number: 2]
+	// This method will override the toString method and return a String with the
+	// player's color, inGame, won and tokens in this format:
+	// Player: color: red, inGame: true, won: false, Tokens: \n[Token: color: red,
+	// number: 1\nToken: color: red, number: 2]
 	@Override
 	public String toString() {
 		String res = "Player: color: " + color + ", inGame: " + inGame + ", won: " + won + ", Tokens: \n[";
