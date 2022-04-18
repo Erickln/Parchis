@@ -3,23 +3,22 @@ package main;
 public class Token {
 	
 	private int number;
-	private Node node;
+	private Node node; // Me parece que el nombre del nodo puede ser más intuitivo, algo como "casilla" en inglés
 	private Board board;
 	private boolean exit;
 	private Player player;
 	private int pos;
-	
-	
+
+	public Token() {
+		
+	}
+
 	public int getPos() {
 		return pos;
 	}
 
 	public void setPos(int pos) {
 		this.pos = pos;
-	}
-
-	public Token() {
-		
 	}
 	
 	public void move(int dice, boolean canmove) {
@@ -34,15 +33,24 @@ public class Token {
 		
 	}
 	
-	public void win() {
-		
+	public void win() { // This method will be called when the player wins the game
+		this.player.setWin(true);
 	}
 	
 	public void start () {
 		
 	}
 	
-	public boolean isClear(int pos) {
+	public boolean isClear(int pos) { 	// ** ¿Por qué pediríamos la posición si ya tenemos acceso a la posición del nodo?
+		if(node.hasSpace()) {
+			return true;
+		}
+		else {
+			return false;				
+		}
+	}
+
+	public boolean isClear() {			// ** Creo que esto es lo que buscabas hacer
 		if(node.hasSpace()) {
 			return true;
 		}
@@ -51,7 +59,7 @@ public class Token {
 		}
 	}
 	
-	public boolean someoneWon() {
+	public boolean someoneWon() { //** Creo que esto es lo que buscabas hacer es mejor hacerlo desde Board
 		if(player.hasWon()) {
 			return true;
 		}
@@ -61,11 +69,11 @@ public class Token {
 	}
 	
     public String getColor() {
-        return null;
+        return "" + this.player.getColor();
     }
 
     public String getStringNumber() {
-        return null;
+        return "" + this.number;
     }
     
     public int getNumber() {
@@ -95,6 +103,14 @@ public class Token {
 
 	public void setExit(boolean exit) {
 		this.exit = exit;
+	}
+
+	public void exit(){		// ** Me parece que estos son más intuitivo que el de arriba
+		this.exit = true;
+	}
+
+	public void enter(){
+		this.exit = false;
 	}
 
 	public Player getPlayer() {

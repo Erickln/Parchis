@@ -25,7 +25,7 @@ public class Board {
 				nodeAux.setBack(circuit.get(i));
 				nodeAux.setFront(null);
 
-			} else if (i == 68 || i == 17 || i == 34 || i == 51) {
+			} else if (i == 68 || i == 17 || i == 34 || i == 51) { // hardcoding for halls
 				if (grayZone.passHall(player)) {
 					grayZone.setBack(circuit.get(i));
 					for (int j = 0; j < 7; j++) {
@@ -51,10 +51,17 @@ public class Board {
 	}
 	
 	public Node getPos(int pos) {
-		return circuit.get(pos);
+		return this.circuit.get(pos);
 	}
 	
-	public int getPosToken(int pos) {
-		return token.getPos();
+	// This method is used to get the position of the node in the circuit
+	// In progres...
+	public int getPosToken(Token token) {
+		for (int i = 0; i < circuit.size(); i++) {
+			if (circuit.get(i).Tokens.contains(token)) {
+				return i;
+			}
+		}
+		return -2;
 	}
 }
