@@ -12,34 +12,12 @@ public class GrayZone extends SafeZone {
 		this.playerOwner = -1;
 	}
 
-	public boolean passHall(int player) {
-		switch (player) {
-		case 1:
-			if (this.pos == 68) {
-				return true;
-			} else {
-				return false;
-			}
-		case 2:
-			if (this.pos == 17) {
-				return true;
-			} else {
-				return false;
-			}
-		case 3:
-			if (this.pos == 34) {
-				return true;
-			} else {
-				return false;
-			}
-		case 4:
-			if (this.pos == 51) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-		return false;
+	public GrayZone(Node node){
+		this.Tokens = new ArrayList<>();
+		this.back = node.back;
+		this.front = node.front;
+		this.pos = node.pos;
+		this.playerOwner = node.playerOwner;
 	}
 
 }

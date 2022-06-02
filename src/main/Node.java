@@ -6,9 +6,9 @@ public class Node {
 	// Tokens in the node
 	protected ArrayList<Token> Tokens = new ArrayList<>();
 	// Father of the node
-	protected Node back;
+	public Node back;
 	// Children of the node
-	protected Node front;
+	public Node front;
 	// Posotion of the node in the Board
 	protected int pos;
 	protected int playerOwner = -1;
@@ -43,6 +43,14 @@ public class Node {
 		this.playerOwner = -1;
 	}
 
+	public Node(Node node){
+		this.Tokens = node.Tokens;
+		this.back = node.back;
+		this.front = node.front;
+		this.pos = node.pos;
+		this.playerOwner = node.playerOwner;
+	}
+
 	public int getPos() {
 		return pos;
 	}
@@ -70,7 +78,7 @@ public class Node {
 
 	// This method will return the next node
 	public Node next() {
-		return front;
+		return this.front;
 	}
 
 	public void setFront(Node front) {
@@ -114,7 +122,7 @@ public class Node {
 		// tokens
 		// In this format: Node: pos: 0, Tokens: 2, Tokens: \n[Token: color: red,
 		// number: 1\nToken: color: red, number: 2]
-		String res = this.getClass().getSimpleName() + ": pos: " + pos + ", Tokens: " + Tokens.size() + ", Tokens: \n[";
+		String res = this.getClass().getSimpleName() + ": pos: " + pos + ", Tokens: " + Tokens.size() + "\nTokens: \n[";
 		for (int i = 0; i < Tokens.size(); i++) {
 			res += Tokens.get(i).toString();
 			if (i != Tokens.size() - 1) {

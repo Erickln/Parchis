@@ -19,13 +19,13 @@ public class Start extends Node {
 		this.home = home;
 		this.home.front = this;
 
-		if (pos != 5 && pos != 22 && pos != 39 && pos != 56) {
-			System.out.println("Trying to create a start with a invalid pos: " + pos + "\nSafe in "
-					+ this.getClass().getSimpleName() + " setted into 5");
-			this.pos = 5;
-		}
 	}
 
+
+	public Start(Node node, Home home){
+		super(node);
+		this.home = home;
+	}
 	public Start(Home home, int pos, int playerOwner) {
 		super(null, null, pos, playerOwner);
 		this.home = home;
