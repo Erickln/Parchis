@@ -23,3 +23,4 @@ public class SafeZone extends Node{
 		this.pos = node.pos;
 		this.playerOwner = node.playerOwner;
 	}
+}
