@@ -2,7 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
-public class GrayZone extends SafeZone {
+public class GrayZone extends Node {
 
   private PreHallway side;
 
@@ -22,33 +22,4 @@ public class GrayZone extends SafeZone {
     this.side = new PreHallway(this, player); //constructor para que en cuanto se cree el grayzone se cree solamente en grayzone, los prehalls
   }
 
-  public boolean passHall(int player) {
-    switch (player) {
-      case 1:
-        if (this.pos == 68) {
-          return true;
-        } else {
-          return false;
-        }
-      case 2:
-        if (this.pos == 17) {
-          return true;
-        } else {
-          return false;
-        }
-      case 3:
-        if (this.pos == 34) {
-          return true;
-        } else {
-          return false;
-        }
-      case 4:
-        if (this.pos == 51) {
-          return true;
-        } else {
-          return false;
-        }
-    }
-    return false;
-  }
 }

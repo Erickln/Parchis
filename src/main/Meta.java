@@ -14,5 +14,10 @@ public class Meta extends Hallway {
         super(node);
     }
 
+    public Meta(Hallway hallway) {
+        super(hallway);
+    }
+    
+
     
 }

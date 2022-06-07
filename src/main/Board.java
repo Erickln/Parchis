@@ -17,17 +17,16 @@ public class Board {
 			homes.add(new Home(i + 1));
 		}
 
-		// Filling the hallways wirth 8 hallways
+		// Filling the hallways with 4 sets of 7 hallways and 1 meta
+		//Hallways are linked in a doubly linked list
 		for (int i = 0; i < 4; i++) {
-			Hallway Hallhead = new Hallway(null, null, 1, i+1);
-			Node aux = Hallhead;
-			for (int j = 0; j < 7; j++) {
-				Hallway Hall = new Hallway(aux, null, j+1, i+1);
-				aux.setFront(Hall);
-				aux = Hall;
-				hallways.add(Hall);
+			hallways.add(new Hallway(null, i + 1));
+			Hallway aux = hallways.get(i);
+			for (int j = 0; j < 6; j++) {
+				hallways.add(new Hallway(aux, null, -2, i + 1));
+				aux.setBack(hallways.get(0));
+				aux = hallways.get(hallways.size() - 1);
 			}
-			hallways.get(i).setFront(Hallhead);
 		}
 
 		// Create the board in a circular LinkedList    ****Just Nodes
