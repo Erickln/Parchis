@@ -9,14 +9,6 @@ public class Meta extends Hallway {
     public Meta(Node back, Node front, int pos, int player) {
         super(back, front, pos, player);
     }
-
-    public Meta(Node node) {
-        super(node);
-    }
-
-    public Meta(Hallway hallway) {
-        super(hallway);
-    }
     
 
     

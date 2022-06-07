@@ -17,7 +17,7 @@ public class Board {
 			homes.add(new Home(i + 1));
 		}
 
-		// Filling the hallways with 4 sets of 7 hallways and 1 meta
+		// Filling the hallways with 4 sets of 7 hallways and 1 metav            /***************************** */ */
 		//Hallways are linked in a doubly linked list
 		for (int i = 0; i < 4; i++) {
 			hallways.add(new Hallway(null, i + 1));
@@ -57,12 +57,12 @@ public class Board {
 		
 
 		// Setting the PreHallways in the positions 16,33,50,67
-		for (int i = 0; i < 4; i++) {
-			this.setPos(
-			new PreHallway(this.getPos((i*17) - 0 - 1),this.hallways.get(i)),
-			(i*17) + 8
-						);
-		}
+		// for (int i = 0; i < 4; i++) {
+		// 	this.setPos(
+		// 	new PreHallway(this.getPos((i*17) - 0 - 1),this.hallways.get(i)),
+		// 	(i*17) + 8
+		// 				);
+		// }
 
 
 		// Setting the PreHallway positions in the positions 16,33,50,67

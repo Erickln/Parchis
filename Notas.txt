@@ -1,0 +1,7 @@
+El prehall es un nodo hijo hardcodeado para que solo el tenga un acceso a hall, que será una lista doblemente linkeada, los next() evaluan cada movimiento, haciendo referencia si está bloqueado (+2 fichas), es un prehall, un safe o un gray, 
+El start del home es hardcode al pos
+El pos incial del board es 0
+Arraylist del nodo: <2 tokens de capacidad>
+El safe: int de start es la posicion inicial en el tablero que este toma 
+Hall va a ser la cabeza de una lista doblemente linkeada//note: canenter() metodo de node, no recuerdo bien qué era, lo implementé como un condicional para pasar el token a el head-PreHallway//encuentro una confusión en lo que es la grayzone, la safezone, y recuerdo que las start también son safezones, pero estas tienen dueño, le quise añadir un dueño dentro de los parametros del constructor pero están implementados ya en el board y no sé si moverle, voy a hacer un safezone2 por ahora.
+//no he visto los nuevos constructores que mencionaste en el mensaje, pero me acabo de dar cuenta que la gran mayoria de ellos no necesitan back, estamos haciendo que sea doblelinked, pero no se puede retroceder.
